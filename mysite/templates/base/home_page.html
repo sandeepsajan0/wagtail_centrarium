@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% block content %}
+<div>
+    {% image page.bg_image fill-2000x800 as img %}
+    <div class="site-header-container has-cover" style="background-image:url({{ img.url }})">
+        {{ page.title }}
+        {{ page.profession }}
+    </div>
+</div>
+{% endblock %}
