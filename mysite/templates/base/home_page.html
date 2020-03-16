@@ -2,10 +2,14 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 {% block content %}
 <div>
-    {% image page.bg_image fill-2000x800 as img %}
-    <div class="site-header-container has-cover" style="background-image:url({{ img.url }})">
-        {{ page.title }}
-        {{ page.profession }}
+    {% image page.bg_image height-400 as bg_img %}
+    <div class="site-header-container has-cover" style="background-image:url({{ bg_img.url }})">
+        <div class="scrim has-cover">
+          <header class="site-header">
+            <h1 class="title">{{ page.name }}</h1>
+            <p class="subtitle"> {{ page.profession }} </p>
+          </header>
+        </div>
     </div>
 </div>
 {% endblock %}

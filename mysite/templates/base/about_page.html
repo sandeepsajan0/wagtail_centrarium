@@ -1,11 +1,20 @@
 {% extends 'base.html' %}
 {% load wagtailimages_tags wagtailcore_tags %}
 {% block content %}
-<div>
-    {% image page.profile_pic original %}
-<!--<div class="site-header-container has-cover" style="background-image:url({{ img.url }})">-->
-   {{ page.title }}
-    {{ page.body }}
-</div>
+<div class="page-content">
+    <div class="wrapper">
+      <div class="page">
+          <header class="post-header">
+          <h1 class="post-title">{{ page.title }}</h1>
+          </header>
+
+          <div class="profile">
+              {% image page.profile_pic fill-150x200 %}
+              <a href="{{ page.resume.url }}" target="_blank">Resume</a>
+          </div>
+
+          <article class="post-content">{{ page.body }}</article>
+      </div>
+    </div>
 </div>
 {% endblock %}

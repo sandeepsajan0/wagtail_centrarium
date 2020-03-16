@@ -6,6 +6,7 @@ from wagtail.core.fields import RichTextField, StreamField
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.search import index
 
 # Create your models here.
@@ -41,12 +42,20 @@ class AboutPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    resume = models.ForeignKey(
+        'wagtaildocs.Document',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     body = StreamField([
         ('paragraph', blocks.RichTextBlock()),
     ])
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('profile_pic'),
+        DocumentChooserPanel('resume'),
         StreamFieldPanel('body'),
     ]
 
@@ -62,4 +71,16 @@ class BlogPage(Page):
 
     content_panels = Page.content_panels + [
         StreamFieldPanel("body"),
+    ]
+
+class ProjectsPage(Page):
+    """
+    Projects
+    """
+    body = StreamField([
+        ('project_name',blocks.CharBlock(classname="full title")),
+        ('project_description', blocks.CharBlock(classname="full title")),
+    ])
+    content_panels = Page.content_panels + [
+        StreamFieldPanel("body")
     ]
