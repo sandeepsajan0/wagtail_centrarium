@@ -329,7 +329,10 @@ pre code.hljs {
     height: 4em; }
     @media screen and (min-width: 768px) {
       .navigation .logo {
-        padding-left: 16px; } }
+        padding-left: 16px;
+        max-height: 2.5em;
+        margin-top: 0.75em;
+        padding-right: 1em;} }
     .navigation .logo img {
       max-height: 2.5em;
       margin-top: 0.75em;

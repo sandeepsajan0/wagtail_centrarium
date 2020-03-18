@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load wagtailcore_tags wagtailimages_tags %}
+{% block body_class %}template-blogindexpage{% endblock %}
 {% block content %}
 <div>
     {% image page.bg_image height-400 as bg_img %}
@@ -9,6 +10,32 @@
             <h1 class="title">{{ page.name }}</h1>
             <p class="subtitle"> {{ page.profession }} </p>
           </header>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="home">
+            <div class="wrapper">
+                <ul class="post-list">
+                    {% for blog in blogpages %}
+                        <li class="post">
+                            <a href="{% pageurl blog %}">
+                                <h2>{{ blog.title }}</h2>
+                                {% with blog=blog.specific %}
+                                <section class="post-excerpt" itemprop="description">
+                                    <p>{{ blog.featured_intro }}</p>
+                                </section>
+                                <section class="post-meta">
+                                    <div class="post-date">{{ blog.date }}</div>
+                                </section>
+                                <div class="post-categories">
+                                    <!--{# add categories}-->
+                                </div>
+                                {% endwith %}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </div>
 </div>

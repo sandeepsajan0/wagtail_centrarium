@@ -1,8 +1,25 @@
 {% extends 'base.html' %}
 {% load wagtailimages_tags wagtailcore_tags %}
 {% block content %}
-<div>
-    {{ page.body }}
-</div>
+
+<div class="page-content">
+    <div class="wrapper">
+        <div class="Page">
+            <article class="post-content">
+                <h2 id="Dummy"> My Projects</h2>
+                <ul class="posts-list">
+                    {% for project in page.projects.all %}
+                        <li>
+                            <strong>
+                                <a href="{{ project.project_url }}" target="_blank">{{ project.project_name }}</a>
+                            </strong>
+                            <p>{{ project.project_description }}</p>
+                          <!--<span class="post-date"> October 2017 - February 2018</span>-->
+                        </li>
+                    {% endfor %}
+                </ul>
+            </article>
+        </div>
+    </div>
 </div>
 {% endblock %}

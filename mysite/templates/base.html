@@ -1,195 +1,32 @@
-{% load static wagtailuserbar %}
+{% load static wagtailuserbar menu_tags %}
+
+{% get_menu "main-nav" as navigation %}
 
 <!DOCTYPE html>
 <html>
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Sandeep Chauhan</title>
-  <meta name="description" content="">
-
-  <meta name="author" content="Sandeep Chauhan">
-  <meta name="copyright" content="&copy; Sandeep Chauhan 2018">
-
-
-  <!-- External libraries -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/monokai-sublime.min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
-
-  <!-- Facebook OGP cards -->
-  <meta property="og:description" content="" />
-  <meta property="og:url" content="http://sandeepsajan0.github.io" />
-  <meta property="og:site_name" content="Sandeep Chauhan" />
-  <meta property="og:title" content="Sandeep Chauhan" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://sandeepsajan0.github.io/assets/sandeeplogo.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="612" />
-  <meta property="og:image:height" content="605" />
-
-
-
-  <!-- Twitter: card tags -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Sandeep Chauhan">
-  <meta name="twitter:description" content="">
-  <meta name="twitter:image" content="http://sandeepsajan0.github.io/assets/sandeeplogo.png">
-  <meta name="twitter:url" content="http://sandeepsajan0.github.io">
-
-
-
-
-  <!-- Site styles -->
-  <link rel="stylesheet" href="/static/css/mysite.css">
-  <link rel="canonical" href="http://sandeepsajan0.github.io/">
-  <!--  <link rel="alternate" type="application/rss+xml" title="Sandeep Chauhan" href="http://sandeepsajan0.github.io/feed.xml" />-->
-</head>
-
+{% block head %}
+    {% include "includes/head.html" %}
+{% endblock head %}
 
 <body class="{% block body_class %}{% endblock %}">
 
-  <header class="navigation" role="banner">
-    <div class="navigation-wrapper">
-      <a href="/" class="logo">
-        <img src="/media/sandeeplogo.svg" alt="Sandeep Chauhan">
-
-      </a>
-      <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
-        <i class="fa fa-bars"></i>
-      </a>
-      <nav role="navigation">
-        <ul id="js-navigation-menu" class="navigation-menu show">
-
-
-          <li class="nav-link"><a href="/about/">About Me</a>
-
-          <li class="nav-link"><a href="/blog/">Blogs</a>
-
-          <li class="nav-link"><a href="/projects/">Projects</a>
-
-          <!--<li class="nav-link"><a href="assets/Resume.pdf" target="_blank">Resume</a>-->
-
-        </ul>
-      </nav>
-    </div>
-  </header>
-  {% wagtailuserbar %}
+  {% block header %}
+    {% include "includes/header.html" %}
+  {% endblock header %}
 
   {% block content %}{% endblock %}
-  <script type="text/javascript" src="{% static 'js/mysite.js' %}"></script>
+
   {% block extra_js %}
             {# Override this in templates to add extra javascript #}
-        {% endblock %}
+  {% endblock %}
 
-  <footer class="site-footer">
-
-    <div class="wrapper">
-
-      <h3 class="footer-heading">Sandeep Chauhan</h3>
-
-      <div class="site-navigation">
-
-        <p><strong>Site Map</strong></p>
-        <ul class="pages">
-
-
-          <li class="nav-link"><a href="/about/">About Me</a>
-
-
-          <li class="nav-link"><a href="/blog/">Blogs</a>
-
-
-          <li class="nav-link"><a href="/projects/">Projects</a>
-
-
-        </ul>
-      </div>
-
-      <div class="site-contact">
-
-        <p><strong>Contact</strong></p>
-        <ul class="social-media-list">
-          <li>
-            <a href="mailto:sandeepsajan0@gmail.com" target="_blank">
-              <i class="fa fa-envelope-o"></i>
-              <span class="username">sandeepsajan0@gmail.com</span>
-            </a>
-          </li>
-
-
-
-          <li>
-            <a href="https://twitter.com/sandeepsajan0" target="_blank" title="Follow me on Twitter">
-              <i class="fa fa-twitter"></i>
-              <span class="username">sandeepsajan0</span>
-            </a>
-          </li>
-
-
-
-          <li>
-            <a href="https://github.com/sandeepsajan0" target="_blank" title="Fork me on GitHub">
-              <i class="fa fa-github"></i>
-              <span class="username">sandeepsajan0</span>
-            </a>
-          </li>
-
-
-          <li>
-            <a href="https://www.linkedin.com/in/sandeepsajan0/" target="_blank" title="Connect with me on LinkedIn">
-              <i class="fa fa-linkedin"></i>
-              <span class="username">sandeepsajan0</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="https://medium.com/@sandeepsajan0/" target="_blank" title="Follow me on Medium">
-              <i class="fa fa-medium"></i>
-              <span class="username">sandeepsajan0</span>
-            </a>
-          </li>
-
-        </ul>
-      </div>
-
-      <!--    <div class="site-signature">-->
-      <!--      <p class="rss-subscribe text"><strong>Subscribe <a href="/sandeep/feed.xml">via RSS</a></strong></p>-->
-      <!--      <p class="text"></p>-->
-      <!--    </div>-->
-
-    </div>
-
-  </footer>
+  {% block footer %}
+    {% include "includes/footer.html" %}
+  {% endblock footer %}
 
   <!-- Scripts -->
-  <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      // Default syntax highlighting
-      hljs.initHighlightingOnLoad();
-
-      // Header
-      var menuToggle = $('#js-mobile-menu').unbind();
-      $('#js-navigation-menu').removeClass("show");
-      menuToggle.on('click', function (e) {
-        e.preventDefault();
-        $('#js-navigation-menu').slideToggle(function () {
-          if ($('#js-navigation-menu').is(':hidden')) {
-            $('#js-navigation-menu').removeAttr('style');
-          }
-        });
-      });
-    });
-
-  </script>
+  <script type="text/javascript" src="{% static 'js/mysite.js' %}"></script>
 
 </body>
 

@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
-{% load wagtailimages_tags wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 {% block content %}
-<div>
-    <!--{{ page.heading }}-->
-    <!--{% image page.profile_pic original %}-->
-<!--<div class="site-header-container has-cover" style="background-image:url({{ img.url }})">-->
 
-    {{ page.body }}
-</div>
-</div>
+<article style="text-align:center;">
+    {% for block in page.body %}
+        {% if block.block_type == "heading" %}
+            <h1>{{ block.value }}</h1>
+        {% elif block.block_type == "image"%}
+            {% image block.value fill-400x300 %}
+        {% else %}
+            <section class="block-{{ block.block_type }}">
+                {% include_block block %}
+            </section>
+        {% endif %}
+    {% endfor %}
+</article>
 {% endblock %}

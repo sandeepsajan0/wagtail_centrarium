@@ -1,0 +1,42 @@
+{% load static footer_tags %}
+{% get_contacts "footer-contacts" as contacts %}
+
+<footer class="site-footer">
+
+    <div class="wrapper">
+
+      <h3 class="footer-heading">{{ contacts.footer_heading }}</h3>
+
+      <div class="site-navigation">
+
+        <p><strong>Site Map</strong></p>
+        <ul class="pages">
+
+          {% for item in navigation.menu_items.all %}
+            <li class="nav-link">
+              <a href="{{ item.link }}" >{{ item.title }}</a>
+            </li>
+          {% endfor %}
+
+        </ul>
+      </div>
+
+      <div class="site-contact">
+
+        <p><strong>Contact</strong></p>
+        <ul class="social-media-list">
+
+            {% for item in contacts.footer_contacts.all %}
+            <li>
+              <a href="{{ item.link_url }}" target="_blank">
+                  <i class="{{ item.link_class }}"></i>
+                  <span class="username">{{ item.link_title }}</span>
+              </a>
+            </li>
+            {% endfor %}
+
+        </ul>
+      </div>
+    </div>
+
+  </footer>

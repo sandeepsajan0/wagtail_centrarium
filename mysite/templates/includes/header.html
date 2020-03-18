@@ -1,0 +1,25 @@
+{% load static menu_tags header_tags %}
+{% get_menu "main-nav" as navigation %}
+<header class="navigation" role="banner">
+    <div class="navigation-wrapper">
+        <!--<a href="/" class="logo">-->
+            <!--<img src="/media/sandeeplogo.svg" alt="Sandeep Chauhan">-->
+
+        <!--</a>-->
+        {% get_header_logo %}
+        <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+            <i class="fa fa-bars"></i>
+        </a>
+        <nav role="navigation">
+            <ul id="js-navigation-menu" class="navigation-menu show">
+
+              {% for item in navigation.menu_items.all %}
+                <li class="nav-link">
+                  <a href="{{ item.link }}" >{{ item.title }}</a>
+                </li>
+              {% endfor %}
+
+            </ul>
+        </nav>
+    </div>
+</header>
