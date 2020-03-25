@@ -7,14 +7,14 @@
           <header class="post-header">
           <h1 class="post-title">{{ page.title }}</h1>
           </header>
-
           <div class="profile">
               {% image page.profile_pic fill-220x220 %}
-              <!--<a href="{{ page.resume.url }}" target="_blank">Resume</a>-->
           </div>
           <br>
+          <!--<a href="/document/view/1/Resume.pdf" class="link-button" target="_blank">Resume</a>-->
           <article class="post-content">{{ page.body }}</article>
       </div>
     </div>
 </div>
+
 {% endblock %}

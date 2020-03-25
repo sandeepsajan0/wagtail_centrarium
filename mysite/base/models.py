@@ -161,7 +161,7 @@ class MenuItem(Orderable):
         if self.link_page:
             return self.link_page.url
         elif self.link_url:
-            self.link_url
+            return self.link_url
         return "#"
 
     @property

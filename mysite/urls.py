@@ -5,7 +5,7 @@ from django.contrib import admin
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
-
+from .base.views import view_document
 from mysite.search import views as search_views
 
 urlpatterns = [
@@ -13,6 +13,7 @@ urlpatterns = [
 
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
+    url(r'^document/view/(\d+)/(.*)$', view_document),
 
     url(r'^search/$', search_views.search, name='search'),
 
